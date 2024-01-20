@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { checkHeading } from "./functionalities/Heading";
 import { checkBlockQuote } from "./functionalities/BlockQuote";
 import { checkBold } from "./functionalities/Bold";
+import { checkStrikethrough } from "./functionalities/Strikethrough";
 const Area = () => {
   const textareaRef = useRef < HTMLTextAreaElement > null;
 
@@ -12,7 +13,7 @@ const Area = () => {
   }, []);
   return (
     <div id="area-sec">
-      <div dangerouslySetInnerHTML={{ __html: checkBold("**hi**") }} />
+      <div dangerouslySetInnerHTML={{ __html: checkStrikethrough("~~hi~~") }} />
       {/* <textarea
         ref={textareaRef}
         style={{
