@@ -10,3 +10,36 @@
   align-items: center;
   justify-content: space-between;
 }
+
+#area-sec {
+  display: flex;
+}
+
+.editor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  padding: 100px 30px;
+  width: 50%;
+  border-radius: 10px;
+}
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  padding: 100px 30px;
+  width: 50%;
+  border-radius: 10px;
+
+
+}
+.text-area{
+  padding: 30px;
+  font-size: 22px;
+  width: 500px;
+  height: 600px;
+  border: none;
+  box-shadow: 0 0 20px 1px #888888;
+}
