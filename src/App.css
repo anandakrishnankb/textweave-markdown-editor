@@ -24,7 +24,7 @@
   width: 50%;
   border-radius: 10px;
 }
-.preview {
+.preview-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
