@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { checkHeading } from "./functionalities/Heading";
-import { checkBlockQuote } from "./functionalities/BlockQuote";
-import { checkBold } from "./functionalities/Bold";
-import { checkStrikethrough } from "./functionalities/Strikethrough";
-import { checkItalics } from "./functionalities/Italics";
-import { code } from "./functionalities/code";
-import { unorderedList } from "./functionalities/UnorderedList";
-import { checkHorizontalRule } from "./functionalities/Horizontal";
+import {
+  checkBlockQuote,
+  checkBold,
+  checkHeading,
+  checkHorizontalRule,
+  checkItalics,
+  checkStrikethrough,
+  code,
+  unorderedList,
+} from "./functionalities";
 
 const Area = () => {
   const [markdownInput, setMarkdownInput] = useState("");
@@ -18,15 +20,17 @@ const Area = () => {
     if (savedMarkdown) {
       setMarkdownInput(savedMarkdown);
     }
+
     if (textareaRef.current) {
       textareaRef.current.focus();
     }
+
     const syncScroll = () => {
       if (textareaRef.current && previewRef.current) {
-        const scrollPercentage =
+        const textareaScrollPercentage =
           textareaRef.current.scrollTop / textareaRef.current.scrollHeight;
         previewRef.current.scrollTop =
-          previewRef.current.scrollHeight * scrollPercentage;
+          previewRef.current.scrollHeight * textareaScrollPercentage;
       }
     };
 
@@ -46,11 +50,10 @@ const Area = () => {
   }, [markdownInput]);
 
   const parseMarkdown = (markdownText) => {
-    const lines = unorderedList(markdownText).split("\n");
+    const unorderedListProcessedText = unorderedList(markdownText);
+    const lines = unorderedListProcessedText.split("\n");
 
     return lines.map((line, index) => {
-      let parsedLine = line;
-
       if (
         line.startsWith("<li>") ||
         line.startsWith("</ul>") ||
@@ -60,22 +63,25 @@ const Area = () => {
       }
 
       const element =
-        checkBlockQuote(parsedLine) ||
-        checkHeading(parsedLine) ||
-        checkHorizontalRule;
+        checkHorizontalRule(line) ||
+        checkBlockQuote(line) ||
+        checkHeading(line);
+
       if (element) {
         return React.cloneElement(element, { key: index });
       }
 
-      parsedLine = checkBold(parsedLine);
+      let parsedLine = checkBold(line);
       parsedLine = checkItalics(parsedLine);
       parsedLine = checkStrikethrough(parsedLine);
       parsedLine = code(parsedLine);
+      // parsedLine = parseHighlight(parsedLine);
+      // parsedLine = parseImages(parsedLine);
+      // parsedLine = parseLinks(parsedLine);
 
       return <p key={index} dangerouslySetInnerHTML={{ __html: parsedLine }} />;
     });
   };
-
   return (
     <div id="area-sec">
       <div className="editor">

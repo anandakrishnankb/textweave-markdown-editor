@@ -1,6 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
 * {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 .nav-bar {
@@ -14,8 +18,19 @@
 #area-sec {
   display: flex;
 }
+.logo{
+  font-size: 40px;
+  color: white;
+}
+.sub-title{
+  color: white;
+  font-size: 22px;
+  font-style: italic;
+  font-weight:lighter;
+}
 
 .editor {
+  outline: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,14 +47,66 @@
   padding: 100px 30px;
   width: 50%;
   border-radius: 10px;
-
-
 }
-.text-area{
+.text-area {
   padding: 30px;
   font-size: 22px;
   width: 500px;
   height: 600px;
   border: none;
   box-shadow: 0 0 20px 1px #888888;
+  overflow: auto;
+
+}
+.preview code {
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: "Courier Prime", Courier, monospace;
+  color: rgb(218, 51, 48);
+}
+
+.preview blockquote{
+  background-color: #f0f0f0; /* Background color for blockquote */
+  border-left: 3px solid #ccc; /* Left border color for blockquote */
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+@media screen and (max-width:798px) {
+  #area-sec{
+    display: flex;
+    flex-direction: column;
+  }
+  .preview-wrap{
+    width: 100%;
+  }
+  .editor{
+    width: 100%;
+  }
+  .logo{
+    font-size: 24px;
+  }
+  .nav-bar{
+    padding: 10px;
+    display: flex;
+    gap: 50px;
+  }
+  .sub-title{
+    font-size: 10px;
+    text-wrap: wrap;
+  }
+  .text-area {
+    padding: 20px;
+    font-size: 16px;
+    height: 500px;
+    border: none;
+  }
+  .preview{
+
+  }
 }

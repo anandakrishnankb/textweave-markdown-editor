@@ -6,13 +6,9 @@ const Navbar = () => {
   return (
     <div id="nav-bar-sec">
       <div className="nav-bar">
-        <Title level={2} style={{ color: "white", margin: "0px" }}>
-          TextWeave
-        </Title>
+        <h1 className="logo">TextWeave</h1>
         <div className="nav-sub-text">
-          <Text style={{ color: "white", fontStyle: "italic" }}>
-            Your Markdown Companion for Effortless Writing{" "}
-          </Text>
+          <p className="sub-title">Your Markdown Companion for Effortless Writing </p>
         </div>
       </div>
     </div>

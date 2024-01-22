@@ -1,13 +1,13 @@
 export const unorderedList = (markdownText) => {
-  let inUnorderedList = false;
   const lines = markdownText.split("\n");
-  const parsedList = [];
+  let inUnorderedList = false;
+  const newList = [];
 
   for (const line of lines) {
-    if (line.startsWith("-")) {
+    if (line.startsWith("- ")) {
       if (!inUnorderedList) {
         inUnorderedList = true;
-        parsedList.push("<ul>");
+        newList.push("<ul>");
       }
       newList.push(`<li>${line.substring(2)}</li>`);
     } else {
@@ -15,10 +15,13 @@ export const unorderedList = (markdownText) => {
         inUnorderedList = false;
         newList.push("</ul>");
       }
+      newList.push(line);
     }
-    if (inUnorderedList) {
-      newList.push("</ul>");
-    }
-    return parsedList.join("\n");
   }
+
+  if (inUnorderedList) {
+    newList.push("</ul>");
+  }
+
+  return newList.join("\n");
 };
